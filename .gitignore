@@ -1,0 +1,79 @@
+# Data files
+data/
+datamart/
+*.csv
+*.txt
+*.parquet
+*.json
+*.pkl
+*.pickle
+
+# Large dataset files
+combined_data_*.txt
+movie_titles.csv
+netflix-prize-data/
+netflix-prize-data.zip
+
+# Logs
+logs/
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Docker
+.dockerignore
+
+# MLflow artifacts
+mlruns/
+artifacts/
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Documentation (optional)
+*.md
+README*
+Readme*
+
+# Old/backup files
+*.bak
+*.old
+*~
+
+# Monitoring reports
+monitoring/reports/
+*.html
