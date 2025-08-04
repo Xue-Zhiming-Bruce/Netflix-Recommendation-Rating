@@ -31,21 +31,7 @@ A complete MLOps pipeline for Netflix recommendation system using Airflow, MLflo
 └── nginx.conf              # Nginx configuration
 ```
 
-## Quick Start
-
-1. **Set up environment variables** in `.env` file:
-   ```bash
-   AWS_ACCESS_KEY_ID=your_access_key
-   AWS_SECRET_ACCESS_KEY=your_secret_key
-   AWS_DEFAULT_REGION=us-east-1
-   S3_BUCKET_NAME=your_bucket_name
-   ```
-
-2. **Run the MLOps pipeline**:
-   ```bash
-   chmod +x deploy.sh
-   ./deploy.sh
-   ```
+![Netflix MLOps Pipeline Dashboard](Webpage.png)
 
 ## Services
 
