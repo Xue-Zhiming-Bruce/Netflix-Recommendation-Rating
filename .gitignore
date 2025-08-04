@@ -65,9 +65,9 @@ artifacts/
 .env.production
 
 # Documentation (optional)
-*.md
-README*
-Readme*
+# *.md
+# README*
+# Readme*
 
 # Old/backup files
 *.bak
