@@ -1,21 +1,41 @@
 # Netflix MLOps Pipeline
 
-A complete MLOps pipeline for Netflix recommendation system using Airflow, MLflow, and Evidently.
+A complete MLOps pipeline for Netflix recommendation system using Airflow, MLflow, and Evidently. This pipeline processes the Netflix Prize dataset to build and deploy machine learning models for movie recommendations.
+
+## Dataset
+
+This project uses the **Netflix Prize Dataset** from Kaggle:
+- **Source**: [Netflix Prize Data](https://www.kaggle.com/datasets/netflix-inc/netflix-prize-data)
+- **Description**: Contains over 100 million ratings from 480,000 users on 17,770 movies
+- **Format**: User-movie rating pairs with timestamps
+- **Goal**: Predict user ratings for movies to improve recommendation accuracy
 
 ## Quick Start
 
-1. Set up environment variables in `.env` file:
+1. **Download the dataset** from [Kaggle Netflix Prize Data](https://www.kaggle.com/datasets/netflix-inc/netflix-prize-data)
+
+2. **Set up environment variables** in `.env` file:
 ```bash
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
 AWS_DEFAULT_REGION=us-east-1
 S3_BUCKET_NAME=your-bucket-name
+MLFLOW_TRACKING_URI=http://localhost:5000
+AIRFLOW_UID=50000
 ```
 
-2. Deploy the pipeline:
+3. **Upload dataset to S3** (or place in local data directory)
+
+4. **Deploy the pipeline**:
 ```bash
+chmod +x deploy.sh
 ./deploy.sh
 ```
+
+5. **Access the services**:
+   - Airflow UI: http://localhost:8080 (admin/admin)
+   - MLflow UI: http://localhost:5000
+   - Monitor logs and pipeline execution
 
 ## Architecture
 
@@ -46,10 +66,27 @@ S3_BUCKET_NAME=your-bucket-name
 
 ## Data Flow
 
-1. **Bronze Layer**: Raw data ingestion from S3
-2. **Silver Layer**: Data cleaning and transformation
-3. **Gold Layer**: Feature engineering and model training
-4. **Monitoring**: Continuous data quality checks with Evidently
+1. **Bronze Layer**: 
+   - Raw Netflix dataset ingestion from S3
+   - Data validation and schema enforcement
+   - Stores original CSV files in bronze directory
+
+2. **Silver Layer**: 
+   - Data cleaning and preprocessing
+   - Handle missing values and outliers
+   - User and movie feature extraction
+   - Normalized rating data
+
+3. **Gold Layer**: 
+   - Feature engineering for ML models
+   - User-item interaction matrices
+   - Model training (collaborative filtering, matrix factorization)
+   - Model evaluation and validation
+
+4. **Monitoring**: 
+   - Data quality checks with Evidently
+   - Model performance monitoring
+   - Drift detection for user behavior changes
 
 ## Features
 
@@ -62,9 +99,12 @@ S3_BUCKET_NAME=your-bucket-name
 
 ## Requirements
 
-- Docker and Docker Compose
-- AWS S3 access credentials
-- Python 3.8+
+- **Docker** and **Docker Compose** (latest versions)
+- **AWS S3** access credentials for data storage
+- **Python 3.8+** for local development
+- **8GB+ RAM** recommended for processing large datasets
+- **Kaggle account** to download the Netflix Prize dataset
+- **Git** for version control
 
 ## Contributing
 
